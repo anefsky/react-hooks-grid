@@ -1,19 +1,23 @@
 import React from 'react';
 import{ Header, Main }  from './styles.js';
 import Grid from '../Grid';
+import Loader from '../Loader';
 import { gridColumns, fetchUrl, nytapi } from '../../assets/constants';
 
 export default function App() {
 
   const [books, setBooks] = React.useState([]);
+  const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
     if(!localStorage.getItem('books')) {
+      setLoading(true);
       fetch(`${fetchUrl}?api-key=${nytapi}`)
         .then(response => response.json())
         .then(myJson => 
           localStorage.setItem('books', JSON.stringify(myJson.results.books)))
-        .then(() => setBooks(JSON.parse(localStorage.getItem('books'))));
+        .then(() => setBooks(JSON.parse(localStorage.getItem('books'))))
+        .then(() => setLoading(false))
     } else {
       setBooks(JSON.parse(localStorage.getItem('books')))
     }
@@ -31,8 +35,10 @@ export default function App() {
       <Header>
         NYTimes Best Sellers
       </Header>
+
       <Main>
-        <Grid columns={gridColumns} data={books} deleteRecord={deleteRecord}/>
+        { loading ? <Loader /> :
+          <Grid columns={gridColumns} data={books} deleteRecord={deleteRecord}/> }
       </Main>
     </>
   );
