@@ -19,13 +19,20 @@ export default function App() {
     }
   }, []);
 
+  function deleteRecord(title) {
+    const oldList = JSON.parse(localStorage.getItem('books'));
+    const newList = oldList.filter(x => x.title !== title);
+    localStorage.setItem('books', JSON.stringify(newList));
+    setBooks(JSON.parse(localStorage.getItem('books')));
+  }
+
   return (
     <>
       <Header>
-        React-hooks-grid header
+        NYTimes Best Sellers
       </Header>
       <Main>
-      <Grid columns={gridColumns} data={books}/>
+        <Grid columns={gridColumns} data={books} deleteRecord={deleteRecord}/>
       </Main>
     </>
   );
