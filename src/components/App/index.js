@@ -1,5 +1,9 @@
+import React from 'react';
 import{ Header, Main }  from './styles.js';
 import Grid from '../Grid';
+
+const fetchUrl = 'https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json';
+const nytapi = "i2FHN2hEpIDDiWNORGgF0ukGvNqKtqga";
 
 export default function App() {
 
@@ -55,9 +59,23 @@ export default function App() {
     ]
   ];
 
+  function getGridColumns() {
+    return gridColumns;
+  }
 
+  function getGridData() {
+    return gridData;
+    // localStorage.setItem('data', JSON.stringify(gridData));
+    // const data = JSON.parse(localStorage.getItem('data'));
+    // return data;
+  }
 
+  React.useEffect(() => {
+    fetch(`${fetchUrl}?api-key=${nytapi}`)
+      .then(response => response.json())
+      .then(myJson => console.log(myJson.results.books));
   
+  }, []);
 
   return (
     <>
@@ -65,7 +83,7 @@ export default function App() {
         React-hooks-grid header
       </Header>
       <Main>
-        <Grid columns={gridColumns} data={gridData}/>
+        <Grid columns={getGridColumns()} data={getGridData()}/>
       </Main>
     </>
   );

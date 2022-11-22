@@ -16,7 +16,6 @@ export default function Grid({ columns, data }) {
                                 {row.filter(x => x.columnId === column.id)[0]?.value}
                             </td>
                         )}
-
                     </tr>
                 )}
             </tbody>
