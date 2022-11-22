@@ -9,11 +9,11 @@ export default function Grid({ columns, data }) {
                 </tr>
             </thead>
             <tbody>
-                {data.map((row, idx) => 
-                    <tr key={idx}>
+                {data.map(row => 
+                    <tr key={row.title}>
                         {columns.map(column =>
                             <td key={column.id}>
-                                {row.filter(x => x.columnId === column.id)[0]?.value}
+                                {row[column.id]}
                             </td>
                         )}
                     </tr>
