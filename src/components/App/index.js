@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../Header';
 import Content from '../Content';
 import Loader from '../Loader';
+import BookContext from '../../shared/BookContext';
 import { gridColumns, fetchUrl, nytapi } from '../../assets/constants';
 
 export default function App() {
@@ -31,16 +32,21 @@ export default function App() {
   }
 
   return (
-    <>
-      <Header title={"NYTimes Best Sellers"} />
-
+    <BookContext.Provider
+        value={{
+          gridColumns: gridColumns,
+          data: books,
+          deleteRecord: deleteRecord
+        }}>
       <div>
-        {loading ? <Loader /> :
-          <Content gridColumns={gridColumns} data={books} 
-            deleteRecord={deleteRecord} />
-        }
+        <Header title={"NYTimes Best Sellers"} />
+        <div>
+          {loading ? <Loader /> :
+            <Content />
+          }
+        </div>
       </div>
-    </>
+    </BookContext.Provider>
   );
 }
 

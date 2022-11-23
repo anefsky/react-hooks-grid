@@ -1,10 +1,10 @@
 import { Wrapper } from './styles';
 import Grid from '../Grid';
 
-export default function Content({ gridColumns, data, deleteRecord }) {
+export default function Content() {
     return (
         <Wrapper>
-            <Grid columns={gridColumns} data={data} deleteRecord={deleteRecord} />
+            <Grid />
         </Wrapper>
     )
 }
