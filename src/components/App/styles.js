@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Header = styled.header`
-    height: 30vh;
+    height: 20vh;
     width: 100%;
     display: flex;
     align-items: center;
@@ -9,7 +9,7 @@ export const Header = styled.header`
 `;
 
 export const Main = styled.div`
-    height: 70vh;
+    height: 80vh;
     width: 100%;
     display: flex;
     align-items: center;

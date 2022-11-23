@@ -1,6 +1,6 @@
 import React from 'react';
-import{ Header, Main }  from './styles.js';
-import Grid from '../Grid';
+import Header from '../Header';
+import Content from '../Content';
 import Loader from '../Loader';
 import { gridColumns, fetchUrl, nytapi } from '../../assets/constants';
 
@@ -32,14 +32,14 @@ export default function App() {
 
   return (
     <>
-      <Header>
-        NYTimes Best Sellers
-      </Header>
+      <Header title={"NYTimes Best Sellers"} />
 
-      <Main>
-        { loading ? <Loader /> :
-          <Grid columns={gridColumns} data={books} deleteRecord={deleteRecord}/> }
-      </Main>
+      <div>
+        {loading ? <Loader /> :
+          <Content gridColumns={gridColumns} data={books} 
+            deleteRecord={deleteRecord} />
+        }
+      </div>
     </>
   );
 }
