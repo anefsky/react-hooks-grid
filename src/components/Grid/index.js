@@ -1,5 +1,6 @@
 import React from 'react';
 import BookContext from '../../shared/BookContext';
+import { Link } from 'react-router-dom';
 
 export default function Grid() {
     
@@ -22,9 +23,7 @@ export default function Grid() {
                         <td><button onClick={() => 
                             value.deleteRecord(row.primary_isbn10)}>delete</button>
                         </td>
-                        <td><button onClick={()=>
-                            value.showDetail(row.primary_isbn10)}>detail</button>
-                        </td>
+                        <Link to={`/details/${row.primary_isbn10}`}><button>details</button></Link>
                         {value.gridColumns.map(column =>
                             <td key={column.id}>
                                 {row[column.id]}

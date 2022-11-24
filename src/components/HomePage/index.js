@@ -47,9 +47,6 @@ export default function App() {
           {loading ? <Loader /> :
             <Content />
           }
-
-          {/* <DetailPage book_id="1984818546" /> */}
-
         </div>
       </div>
     </BookContext.Provider>

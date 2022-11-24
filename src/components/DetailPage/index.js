@@ -1,8 +1,11 @@
 import { detailPageFields } from '../../assets/constants';
+import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-export default function DetailPage({ book_id }) {
+export default function DetailPage() {
+    const { bookId } = useParams();
     const availableBooks = JSON.parse(localStorage.getItem('books'));
-    const selectedBook = availableBooks.filter(book => book.primary_isbn10 === book_id)[0];
+    const selectedBook = availableBooks.filter(book => book.primary_isbn10 === bookId)[0];
 
     return (
         <>
@@ -13,6 +16,7 @@ export default function DetailPage({ book_id }) {
                         : <div>{selectedBook[field.id]}</div>}  
                 </div>          
             )}
+            <Link to="/">&lt; Return to list</Link>
         </>
     );
 }
