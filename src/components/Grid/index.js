@@ -1,7 +1,6 @@
 import React from 'react';
 import BookContext from '../../shared/BookContext';
 
-
 export default function Grid() {
     
     const value = React.useContext(BookContext);
@@ -18,9 +17,10 @@ export default function Grid() {
             </thead>
             <tbody>
                 {value.data.map(row => 
-                    <tr key={row.title}>
+                    <tr key={row.primary_isbn10}>
                         <td><button onClick={() => 
-                            value.deleteRecord(row.title)}>delete</button></td>
+                            value.deleteRecord(row.primary_isbn10)}>delete</button>
+                        </td>
                         {value.gridColumns.map(column =>
                             <td key={column.id}>
                                 {row[column.id]}
@@ -31,7 +31,4 @@ export default function Grid() {
             </tbody>
         </table>
     )
-
-
-
 }

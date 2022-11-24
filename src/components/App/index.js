@@ -24,9 +24,9 @@ export default function App() {
     }
   }, []);
 
-  function deleteRecord(title) {
+  function deleteRecord(book_id) {
     const oldList = JSON.parse(localStorage.getItem('books'));
-    const newList = oldList.filter(x => x.title !== title);
+    const newList = oldList.filter(x => x.primary_isbn10 !== book_id);
     localStorage.setItem('books', JSON.stringify(newList));
     setBooks(JSON.parse(localStorage.getItem('books')));
   }
