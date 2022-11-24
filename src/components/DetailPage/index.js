@@ -7,9 +7,10 @@ export default function DetailPage({ book_id }) {
     return (
         <>
             {detailPageFields.map(field => 
-                <div>
+                <div key={field.id}>
                     <h3>{field.label}</h3>
-                    <div>{selectedBook[field.id]}</div>  
+                    {field.isImage ? <img src={selectedBook[field.id]} /> 
+                        : <div>{selectedBook[field.id]}</div>}  
                 </div>          
             )}
         </>

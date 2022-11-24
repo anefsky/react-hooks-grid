@@ -25,6 +25,15 @@ export const detailPageFields = [
   {
     id: 'author',
     label: 'Author'
+  },
+  {
+    id: 'description',
+    label: 'Description'
+  },
+  {
+    id: 'book_image',
+    label: 'Cover',
+    isImage: true
   }
 ]
 

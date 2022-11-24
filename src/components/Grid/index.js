@@ -10,6 +10,7 @@ export default function Grid() {
             <thead>
                 <tr>
                     <th></th>
+                    <th></th>
                     {value.gridColumns.map(column => 
                         <th key={column.id}>{column.label}</th>
                     )}
@@ -20,6 +21,9 @@ export default function Grid() {
                     <tr key={row.primary_isbn10}>
                         <td><button onClick={() => 
                             value.deleteRecord(row.primary_isbn10)}>delete</button>
+                        </td>
+                        <td><button onClick={()=>
+                            value.showDetail(row.primary_isbn10)}>detail</button>
                         </td>
                         {value.gridColumns.map(column =>
                             <td key={column.id}>
