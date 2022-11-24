@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../Header';
 import Content from '../Content';
 import Loader from '../Loader';
+import DetailPage from '../DetailPage';
 import BookContext from '../../shared/BookContext';
 import { gridColumns, fetchUrl, nytapi } from '../../assets/constants';
 
@@ -41,9 +42,12 @@ export default function App() {
       <div>
         <Header title={"NYTimes Best Sellers"} />
         <div>
-          {loading ? <Loader /> :
+          {/* {loading ? <Loader /> :
             <Content />
-          }
+          } */}
+
+          <DetailPage book_id="1984818546" />
+
         </div>
       </div>
     </BookContext.Provider>

@@ -17,3 +17,14 @@ export const gridColumns = [
   }
 ];
 
+export const detailPageFields = [
+  {
+    id: 'title',
+    label: 'Title'
+  },
+  {
+    id: 'author',
+    label: 'Author'
+  }
+]
+
