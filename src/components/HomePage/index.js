@@ -30,23 +30,16 @@ export default function App() {
     setBooks(JSON.parse(localStorage.getItem('books')));
   }
 
-  function showDetail(book_id) {
-    console.log('in showDetail');
-  }
-
   return (
     <BookContext.Provider
         value={{
           gridColumns: gridColumns,
           data: books,
-          deleteRecord: deleteRecord,
-          showDetail: showDetail
+          deleteRecord: deleteRecord
         }}>
       <div>
         <div>
-          {loading ? <Loader /> :
-            <Content />
-          }
+          {loading ? <Loader /> : <Content />}
         </div>
       </div>
     </BookContext.Provider>
