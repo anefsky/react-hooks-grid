@@ -30,11 +30,18 @@ export default function App() {
     setBooks(JSON.parse(localStorage.getItem('books')));
   }
 
+  function updateUserRating(book_id, newRatingNum) {
+    const oldList = JSON.parse(localStorage.getItem('books'));
+    const newList = oldList.map(x => x.primary_isbn10 === book_id ? {...x, userRating: newRatingNum} : x);
+    localStorage.setItem('books', JSON.stringify(newList));
+  }
+
   return (
     <BookContext.Provider
         value={{
           data: books,
-          deleteRecord: deleteRecord
+          deleteRecord: deleteRecord,
+          updateUserRating: updateUserRating
         }}>
       <div>
         <div>

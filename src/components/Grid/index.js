@@ -23,7 +23,7 @@ export default function Grid() {
         <TableContainer component={Paper}>
             <Table sx={{ width: 900 }} size="small" aria-label="simple table">
                 <TableHead>
-                    <TableRow>
+                    <TableRow sx={{ '&>*': { fontWeight: 'bold'}}}>
                         <TableCell>Title</TableCell>
                         <TableCell>Author</TableCell>
                         <TableCell align="right">Rank</TableCell>
@@ -41,7 +41,7 @@ export default function Grid() {
                         <TableCell>{row.title}</TableCell>
                         <TableCell>{row.author}</TableCell>
                         <TableCell align="right">{row.rank}</TableCell>
-                        <TableCell><StarRating ratingNum={3} /></TableCell>
+                        <TableCell><StarRating bookId={row.primary_isbn10} ratingNum={row.userRating || 0} /></TableCell>
                         <TableCell><Link to={`/details/${row.primary_isbn10}`}><IconButton><OpenInNewIcon fontSize="small"/></IconButton></Link></TableCell>
                         <TableCell><IconButton onClick={() => value.deleteRecord(row.primary_isbn10)}><DeleteOutlineIcon fontSize="small"/></IconButton></TableCell>
                     </TableRow>

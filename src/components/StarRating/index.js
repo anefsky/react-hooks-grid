@@ -1,14 +1,18 @@
 import React from 'react';
+import BookContext from '../../shared/BookContext';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
 import { Wrapper } from './styles';
 
-export default function StarRating({ratingNum}) {
+export default function StarRating({ bookId, ratingNum }) {
 
     const [numStars, setNumStars] = React.useState(ratingNum);
 
+    const value = React.useContext(BookContext);
+
     function clicked(num) {
         setNumStars(num);
+        value.updateUserRating(bookId, num);
     }
 
     return (
