@@ -12,6 +12,7 @@ import { Wrapper } from './styles';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import IconButton from '@mui/material/IconButton';
+import StarRating from '../StarRating'
 
 export default function Grid() {
     
@@ -26,7 +27,8 @@ export default function Grid() {
                         <TableCell>Title</TableCell>
                         <TableCell>Author</TableCell>
                         <TableCell align="right">Rank</TableCell>
-                        <TableCell></TableCell>    
+                        <TableCell>User rating</TableCell>    
+                        <TableCell></TableCell>
                         <TableCell></TableCell>    
                     </TableRow>
                 </TableHead>
@@ -39,7 +41,8 @@ export default function Grid() {
                         <TableCell>{row.title}</TableCell>
                         <TableCell>{row.author}</TableCell>
                         <TableCell align="right">{row.rank}</TableCell>
-                        <TableCell align="right"><Link to={`/details/${row.primary_isbn10}`}><IconButton><OpenInNewIcon fontSize="small"/></IconButton></Link></TableCell>
+                        <TableCell><StarRating ratingNum={3} /></TableCell>
+                        <TableCell><Link to={`/details/${row.primary_isbn10}`}><IconButton><OpenInNewIcon fontSize="small"/></IconButton></Link></TableCell>
                         <TableCell><IconButton onClick={() => value.deleteRecord(row.primary_isbn10)}><DeleteOutlineIcon fontSize="small"/></IconButton></TableCell>
                     </TableRow>
                 ))}
