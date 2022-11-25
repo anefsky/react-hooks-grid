@@ -2,7 +2,7 @@ import React from 'react';
 import Content from '../Content';
 import Loader from '../Loader';
 import BookContext from '../../shared/BookContext';
-import { gridColumns, fetchUrl, nytapi } from '../../assets/constants';
+import { fetchUrl, nytapi } from '../../assets/constants';
 
 export default function App() {
 
@@ -33,7 +33,6 @@ export default function App() {
   return (
     <BookContext.Provider
         value={{
-          gridColumns: gridColumns,
           data: books,
           deleteRecord: deleteRecord
         }}>

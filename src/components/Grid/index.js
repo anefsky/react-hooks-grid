@@ -1,37 +1,48 @@
 import React from 'react';
 import BookContext from '../../shared/BookContext';
 import { Link } from 'react-router-dom';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import { Wrapper } from './styles';
 
 export default function Grid() {
     
     const value = React.useContext(BookContext);
 
     return (
-        <table>
-            <thead>
-                <tr>
-                    <th></th>
-                    <th></th>
-                    {value.gridColumns.map(column => 
-                        <th key={column.id}>{column.label}</th>
-                    )}
-                </tr>
-            </thead>
-            <tbody>
-                {value.data.map(row => 
-                    <tr key={row.primary_isbn10}>
-                        <td><button onClick={() => 
-                            value.deleteRecord(row.primary_isbn10)}>delete</button>
-                        </td>
-                        <Link to={`/details/${row.primary_isbn10}`}><button>details</button></Link>
-                        {value.gridColumns.map(column =>
-                            <td key={column.id}>
-                                {row[column.id]}
-                            </td>
-                        )}
-                    </tr>
-                )}
-            </tbody>
-        </table>
+        <Wrapper>
+        <TableContainer component={Paper}>
+            <Table sx={{ width: 1000 }} aria-label="simple table">
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Title</TableCell>
+                        <TableCell>Author</TableCell>
+                        <TableCell align="right">Rank</TableCell>
+                        <TableCell></TableCell>    
+                        <TableCell></TableCell>    
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                {value.data.map((row) => (
+                    <TableRow
+                        key={row.primary_isbn10}
+                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    >
+                        <TableCell>{row.title}</TableCell>
+                        <TableCell>{row.author}</TableCell>
+                        <TableCell align="right">{row.rank}</TableCell>
+                        <TableCell><Link to={`/details/${row.primary_isbn10}`}><button>details</button></Link></TableCell>
+                        <TableCell><button onClick={() => value.deleteRecord(row.primary_isbn10)}>delete</button></TableCell>
+                    </TableRow>
+                ))}
+                </TableBody>
+            </Table>
+        </TableContainer>
+        </Wrapper>
     )
 }
