@@ -9,6 +9,9 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Wrapper } from './styles';
+import DeleteIcon from '@mui/icons-material/Delete';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+
 
 export default function Grid() {
     
@@ -17,7 +20,7 @@ export default function Grid() {
     return (
         <Wrapper>
         <TableContainer component={Paper}>
-            <Table sx={{ width: 1000 }} aria-label="simple table">
+            <Table sx={{ width: 900 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
                         <TableCell>Title</TableCell>
@@ -36,8 +39,8 @@ export default function Grid() {
                         <TableCell>{row.title}</TableCell>
                         <TableCell>{row.author}</TableCell>
                         <TableCell align="right">{row.rank}</TableCell>
-                        <TableCell><Link to={`/details/${row.primary_isbn10}`}><button>details</button></Link></TableCell>
-                        <TableCell><button onClick={() => value.deleteRecord(row.primary_isbn10)}>delete</button></TableCell>
+                        <TableCell><Link to={`/details/${row.primary_isbn10}`}><button><OpenInNewIcon fontSize="small"/></button></Link></TableCell>
+                        <TableCell><button onClick={() => value.deleteRecord(row.primary_isbn10)}><DeleteIcon fontSize="small"/></button></TableCell>
                     </TableRow>
                 ))}
                 </TableBody>
