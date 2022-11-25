@@ -32,7 +32,8 @@ export default function App() {
 
   function updateUserRating(book_id, newRatingNum) {
     const oldList = JSON.parse(localStorage.getItem('books'));
-    const newList = oldList.map(x => x.primary_isbn10 === book_id ? {...x, userRating: newRatingNum} : x);
+    const newList = oldList.map(x => x.primary_isbn10 === book_id ? 
+        {...x, userRating: newRatingNum} : x);
     localStorage.setItem('books', JSON.stringify(newList));
   }
 
