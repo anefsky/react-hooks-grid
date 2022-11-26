@@ -19,9 +19,9 @@ export default function StarRating({ bookId, ratingNum }) {
         <Wrapper>
             {Array(5).fill('').map((_, idx) =>
                 <div key={idx}> 
-                    {numStars <= idx ?
-                        <StarBorderIcon size="small" onClick={() => clicked(idx + 1)} /> : 
-                        <StarIcon sx={{ color: "red" }} size="small" onClick={() => clicked(idx + 1)} />
+                    {idx < numStars ?
+                        <StarIcon sx={{ color: "red" }} size="small" onClick={() => clicked(idx + 1)} /> :
+                        <StarBorderIcon size="small" onClick={() => clicked(idx + 1)} />
                     }
                 </div>
             )}

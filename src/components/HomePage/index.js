@@ -44,11 +44,9 @@ export default function App() {
           deleteRecord: deleteRecord,
           updateUserRating: updateUserRating
         }}>
-      <div>
         <div>
           {loading ? <Loader /> : <Content />}
         </div>
-      </div>
     </BookContext.Provider>
   );
 }
