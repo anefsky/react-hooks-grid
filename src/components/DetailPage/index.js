@@ -1,6 +1,6 @@
-import { detailPageFields } from '../../assets/constants';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { Wrapper, Contents, LeftPanel, RightPanel, Entry, LinkWrap } from './styles';
 
 export default function DetailPage() {
     const { bookId } = useParams();
@@ -8,15 +8,21 @@ export default function DetailPage() {
     const selectedBook = availableBooks.filter(book => book.primary_isbn10 === bookId)[0];
 
     return (
-        <>
-            {detailPageFields.map(field => 
-                <div key={field.id}>
-                    <h3>{field.label}</h3>
-                    {field.isImage ? <img src={selectedBook[field.id]} /> 
-                        : <div>{selectedBook[field.id]}</div>}  
-                </div>          
-            )}
-            <Link to="/">&lt; Return to list</Link>
-        </>
+        <Wrapper>
+            <Contents>
+                <LeftPanel>
+                    <img src={selectedBook.book_image} />
+                </LeftPanel>
+
+                <RightPanel>
+                    <Entry>{selectedBook.title}</Entry>
+                    <Entry>{selectedBook.author}</Entry>
+                    <Entry>{selectedBook.description}</Entry>
+                    <LinkWrap>
+                        <Link to="/">&lt; Return to list</Link>
+                    </LinkWrap>
+                </RightPanel>
+            </Contents>
+        </Wrapper>
     );
 }
