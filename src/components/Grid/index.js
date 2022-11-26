@@ -23,11 +23,11 @@ export default function Grid() {
         <TableContainer component={Paper}>
             <Table sx={{ width: 900 }} size="small" aria-label="simple table">
                 <TableHead>
-                    <TableRow sx={{ '&>*': { fontWeight: 'bold'}}}>
-                        <TableCell>Title</TableCell>
-                        <TableCell>Author</TableCell>
-                        <TableCell align="right">Rank</TableCell>
-                        <TableCell>User rating</TableCell>    
+                    <TableRow>
+                        <TableCell sx={{ fontWeight: 'bold' }}>Title</TableCell>
+                        <TableCell sx={{ fontWeight: 'bold' }}>Author</TableCell>
+                        <TableCell align="right" sx={{ fontWeight: 'bold' }}>Rank</TableCell>
+                        <TableCell sx={{ fontWeight: 'bold' }}>User rating</TableCell>    
                         <TableCell></TableCell>
                         <TableCell></TableCell>    
                     </TableRow>

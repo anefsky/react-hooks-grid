@@ -15,7 +15,7 @@ export default function App() {
       fetch(`${fetchUrl}?api-key=${nytapi}`)
         .then(response => response.json())
         .then(myJson => 
-          localStorage.setItem('books', JSON.stringify(myJson.results.books)))
+          localStorage.setItem('books', JSON.stringify(myJson.results.books.slice(0, 10))))
         .then(() => setBooks(JSON.parse(localStorage.getItem('books'))))
         .then(() => setLoading(false))
     } else {

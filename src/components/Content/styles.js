@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-    height: 80vh;
+    height: 70vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 `;
